@@ -10,3 +10,7 @@ const kHeight1 = 44.0;
 const primaryColor = Color(0xFFD59500);
 const primaryColorL = Color(0xFFC4C4C4);
 
+//image
+
+const splashLogo = 'lib/assets/images/splash-logo.png';
+const logo = 'lib/assets/images/logo.png';
