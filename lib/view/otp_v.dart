@@ -22,12 +22,13 @@ class OtpVerifyScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               logoSet(context),
+              addYSpace(val: 15),
               Text(
                 'AN OTP HAS BEEN SENT TO YOUR MOBILE',
                 style: Theme.of(context)
                     .textTheme
                     .bodyLarge!
-                    .copyWith(fontWeight: FontWeight.bold),
+                    .copyWith(fontWeight: FontWeight.bold, color: kBlack),
               ),
               Container(
                 width: dWidth(context),
@@ -50,6 +51,7 @@ class OtpVerifyScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              addYSpace(val: 15),
               DTextButton(
                 text: 'Resend otp',
                 fuction: () {},
@@ -65,9 +67,15 @@ class OtpVerifyScreen extends StatelessWidget {
                   DButton(
                     isWhite: false,
                     text: 'SUBMIT',
-                    function: () {},
+                    function: () {
+                      Navigator.pushNamed(context, '/home');
+                    },
                   ),
-                  DButton(isWhite: true, text: 'CANCEL',function: (){},)
+                  DButton(
+                    isWhite: true,
+                    text: 'CANCEL',
+                    function: () {},
+                  )
                 ],
               ),
               addYSpace()

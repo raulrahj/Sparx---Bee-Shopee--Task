@@ -1,4 +1,5 @@
 import 'package:bee_shopee/config/constants.dart';
+import 'package:bee_shopee/view/home.dart';
 import 'package:bee_shopee/view/login_screen.dart';
 import 'package:bee_shopee/view/otp_v.dart';
 import 'package:bee_shopee/view/signup_screen.dart';
@@ -50,7 +51,8 @@ class MyApp extends StatelessWidget {
         routes: {
           '/login': (context) => const LoginScreen(),
           '/signUp': (context) => const SignUpScreen(),
-          '/otpVerify': (context) => const OtpVerifyScreen()
+          '/otpVerify': (context) => const OtpVerifyScreen(),
+          '/home': (context) => const HomeScreen()
         },
         home: const SplashScreen());
   }
