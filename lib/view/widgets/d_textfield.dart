@@ -13,47 +13,52 @@ class DTextField extends StatelessWidget {
   final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: dHeight(context) * .09,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            children: [
-              const SizedBox(
-                width: kRadius,
-              ),
-              Text(
-                label,
-                style: Theme.of(context)
-                    .textTheme
-                    .labelMedium!
-                    .copyWith(color: primaryColor, fontWeight: FontWeight.w700),
-              ),
-            ],
-          ),
-          SizedBox(
-            height: 38,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(kRadius),
-              child: TextFormField(
-                textAlignVertical: TextAlignVertical.top,
-                  controller: controller,
-                  cursorColor: Colors.white,
-                  style: Theme.of(context).textTheme.bodyLarge,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    fillColor: primaryColorL,
-                    filled: true,
-                    hintStyle: Theme.of(context)
-                        .textTheme
-                        .bodySmall!
-                        .copyWith(fontSize: 12, fontWeight: FontWeight.normal),
-                    hintText: hint,
-                  )),
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 5),
+      child: SizedBox(
+        height: dHeight(context) * .09,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              children: [
+                const SizedBox(
+                  width: kRadius,
+                ),
+                Text(
+                  label,
+                  style: Theme.of(context)
+                      .textTheme
+                      .labelMedium!
+                      .copyWith(color: primaryColor, fontWeight: FontWeight.w700),
+                ),
+              ],
             ),
-          ),
-        ],
+            SizedBox(
+              height: 38,
+              // child: ClipRRect(
+              //   borderRadius: BorderRadius.circular(kRadius),
+                child: TextFormField(
+                  textAlignVertical: TextAlignVertical.top,
+                    controller: controller,
+                    cursorColor: Colors.white,
+                    style: Theme.of(context).textTheme.bodyLarge,
+                    decoration: InputDecoration(
+                     border: UnderlineInputBorder(
+      borderRadius:BorderRadius.circular(kRadius)),
+                      
+                      fillColor: primaryColorL,
+                      filled: true,
+                      hintStyle: Theme.of(context)
+                          .textTheme
+                          .bodySmall!
+                          .copyWith(fontSize: 12, fontWeight: FontWeight.normal),
+                      hintText: hint,
+                    )),
+              ),
+            // ),
+          ],
+        ),
       ),
     );
   }

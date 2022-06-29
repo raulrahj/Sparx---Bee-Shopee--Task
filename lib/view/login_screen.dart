@@ -1,10 +1,8 @@
 import 'package:bee_shopee/config/constants.dart';
 import 'package:bee_shopee/view/widgets/d_button.dart';
 import 'package:bee_shopee/view/widgets/d_textfield.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:bee_shopee/view/widgets/social_register.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -29,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal:kPadding1),
+          padding: const EdgeInsets.symmetric(horizontal: kPadding1),
           child: Column(
             children: [
               Expanded(
@@ -50,36 +48,31 @@ class _LoginScreenState extends State<LoginScreen> {
                       hint: "Enter your Email/ Mobile Number/ user name ",
                       controller: _usernameController,
                     ),
-                    addYSpace(val: 15),
+                   
                     DTextField(
                         label: "PASSWORD",
                         hint: "Enter your Password",
                         controller: _passwordController),
-                        addYSpace(val: 25.0),
+                    addYSpace(val: 25.0),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        DButton(isWhite: false, text: 'LOG IN',function: (){},),
-                        DButton(isWhite: true, text: 'SIGN UP',function: (){
-                          Navigator.pushNamed(context, '/signUp');
-                        },)
+                        DButton(
+                          isWhite: false,
+                          text: 'LOG IN',
+                          function: () {},
+                        ),
+                        DButton(
+                          isWhite: true,
+                          text: 'SIGN UP',
+                          function: () {
+                            Navigator.pushNamed(context, '/signUp');
+                          },
+                        )
                       ],
                     ),
-                   addYSpace(),
-                    const TitleMedium(text: "LOGIN WITH"),
-                    addYSpace(val: 10.0),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-    children: [
-       const DSocialButton(isGoogle: true,),
-       SizedBox(width: dWidth(context)*.09 ,),
-       const DSocialButton(isGoogle: false)
-
-  
-    ],
-
-
-                    )
+                    addYSpace(),
+                    const SocialRegister(title: 'LOGIN WITH')
                   ],
                 ),
               )
@@ -93,22 +86,26 @@ class _LoginScreenState extends State<LoginScreen> {
 
 class DSocialButton extends StatelessWidget {
   const DSocialButton({
-    Key? key, required this.isGoogle, this.function,
+    Key? key,
+    required this.isGoogle,
+    this.function,
   }) : super(key: key);
-final bool isGoogle;
-final Function()? function;
+  final bool isGoogle;
+  final Function()? function;
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:function,
-      child: Container(
-       padding: const EdgeInsets.all(20.0),
-       decoration: new BoxDecoration(
-         shape: BoxShape.circle,
-         border:Border.all(color: primaryColorL),
-         image: DecorationImage(image: NetworkImage(isGoogle ? google : facebook,),fit: BoxFit.fill)
-       ),
-      )
-    );
+        onTap: function,
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: primaryColorL),
+              image: DecorationImage(
+                  image: NetworkImage(
+                    isGoogle ? google : facebook,
+                  ),
+                  fit: BoxFit.fill)),
+        ));
   }
 }
