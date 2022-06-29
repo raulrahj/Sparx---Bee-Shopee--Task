@@ -2,6 +2,7 @@ import 'package:bee_shopee/config/constants.dart';
 import 'package:bee_shopee/view/login_screen.dart';
 import 'package:bee_shopee/view/widgets/d_button.dart';
 import 'package:bee_shopee/view/widgets/d_textfield.dart';
+import 'package:bee_shopee/view/widgets/logo_set.dart';
 import 'package:bee_shopee/view/widgets/social_register.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -32,11 +33,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           padding: const EdgeInsets.symmetric(horizontal: kPadding1),
           child: Column(
             children: [
-              Container(
-                  alignment: Alignment.bottomCenter,
-                  height: dHeight(context) * .33,
-                  width: dWidth(context),
-                  child: Image.asset(logo)),
+              logoSet(context),
               const TitleMedium(text: 'SIGN UP'),
               Row(
                 children: [
@@ -83,12 +80,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           checkboxValue = newVal!;
                         });
                       }),
-                  Text(
-                    'I agree to the privacy policy',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium!
-                        .copyWith(fontWeight: FontWeight.bold, color: kBlack),
+                  const TitleLarge(
+                    text: 'I agree to the privacy policy',
                   )
                 ],
               ),
@@ -104,13 +97,33 @@ class _SignUpScreenState extends State<SignUpScreen> {
               DButton(
                 isWhite: false,
                 text: 'SUBMIT',
-                function: () {},
+                function: () {
+                  Navigator.pushNamed(context, '/otpVerify');
+                },
               ),
               const SocialRegister(title: 'SIGN UP WITH')
             ],
           ),
         ),
       )),
+    );
+  }
+}
+
+class TitleLarge extends StatelessWidget {
+  const TitleLarge({
+    Key? key,
+    required this.text,
+  }) : super(key: key);
+  final String text;
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: Theme.of(context)
+          .textTheme
+          .titleMedium!
+          .copyWith(fontWeight: FontWeight.bold, color: kBlack),
     );
   }
 }
