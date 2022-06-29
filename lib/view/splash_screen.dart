@@ -14,7 +14,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen>
     with SingleTickerProviderStateMixin {
   late final AnimationController _controller =
-      AnimationController(duration: const Duration(seconds: 3), vsync: this)
+      AnimationController(duration: const Duration(seconds: 2), vsync: this)
         ..forward();
   late final Animation<double> _animation = CurvedAnimation(
     parent: _controller,
@@ -57,7 +57,7 @@ class _SplashScreenState extends State<SplashScreen>
   }
 
   Future _navigation(context) async {
-    await Future.delayed(const Duration(seconds: 4), () {
+    await Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
     });
   }
